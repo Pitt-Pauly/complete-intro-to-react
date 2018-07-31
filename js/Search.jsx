@@ -1,16 +1,24 @@
 // @flow
 
-import * as React from 'react';
-import preload from '../data.json';
+import React, { Component } from 'react';
 import ShowCard from './ShowCard';
+import Header from './Header';
 
 type State = {
   searchTerm: string
 };
 
-class Search extends React.Component<void, State> {
+type Props = {
+  shows: Array<Show>
+};
+
+class Search extends Component<Props, State> {
   state = {
     searchTerm: ''
+  };
+
+  props: {
+    shows: Array<Show>
   };
 
   handleSearchTermChange = (
@@ -22,17 +30,13 @@ class Search extends React.Component<void, State> {
   render() {
     return (
       <div className="search">
-        <header>
-          <h1>h4p1 video</h1>
-          <input
-            onChange={this.handleSearchTermChange}
-            value={this.state.searchTerm}
-            type="text"
-            placeholder="Search"
-          />
-        </header>
+        <Header
+          searchTerm={this.state.searchTerm}
+          showSearch
+          handleSearchTermChange={this.handleSearchTermChange}
+        />
         <div>
-          {preload.shows
+          {this.props.shows
             .filter(
               show =>
                 `${show.title} ${show.description}`
