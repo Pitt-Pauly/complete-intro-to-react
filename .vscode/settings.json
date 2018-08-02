@@ -23,6 +23,7 @@
     "flow.enabled": true,
     "flow.useNPMPackagedFlow": true,
     "flow.pathToFlow": "${workspaceRoot}/node_modules/.bin/flow",
+    "flow.runOnEdit": false,
 
     "terminal.integrated.env.linux": {},
 

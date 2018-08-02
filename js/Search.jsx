@@ -4,15 +4,7 @@ import React, { Component } from 'react';
 import ShowCard from './ShowCard';
 import Header from './Header';
 
-type State = {
-  searchTerm: string
-};
-
-type Props = {
-  shows: Array<Show>
-};
-
-class Search extends Component<Props, State> {
+class Search extends Component<{ shows: Array<Show> }, { searchTerm: string }> {
   state = {
     searchTerm: ''
   };
