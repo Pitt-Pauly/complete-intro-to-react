@@ -1,9 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
+const config = {
   context: __dirname,
   entry: [
+    // prod-hmf: 'webpack-hot-middleware/client?path=__webpack_hmr&timeout=2000',
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
@@ -47,3 +48,11 @@ module.exports = {
     ]
   }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.entry = './js/ClientApp.jsx';
+  config.devtool = false;
+  config.plugins = [];
+}
+
+module.exports = config;
